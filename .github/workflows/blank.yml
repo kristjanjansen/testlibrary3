@@ -13,8 +13,6 @@ jobs:
           ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v1
       - run: npm install
-      - name: Remove previous build
-        run: rm -R dist/*
       - run: npm run build
       - name: Commit files
         run: |
@@ -22,9 +20,11 @@ jobs:
           git config --local user.name "GitHub Action"
           git add dist
           git commit -m "Add changes" -a
+      - uses: nelonoel/branch-name@v1
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
+          branch: ${BRANCH_NAME}
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: butlerlogic/action-autotag@stable
         if: github.ref == 'refs/heads/master'
