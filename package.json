@@ -1,6 +1,12 @@
 {
   "name": "testlibrary3",
-  "private": true,
-  "version": "0.0.3",
-  "main": "src/index.ts"
+  "version": "0.0.4",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
 }
