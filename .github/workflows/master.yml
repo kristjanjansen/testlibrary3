@@ -1,6 +1,6 @@
 name: On merge to master
 on:
-  pull:
+  push:
     branches:
       - master
 jobs:
