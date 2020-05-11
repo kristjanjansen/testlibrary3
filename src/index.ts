@@ -1,3 +1,5 @@
+import { Test } from "./Test";
+
 const message: string = "test_branch..";
 
-export { message };
+export { Test, message };
