@@ -1,2 +1,3 @@
+import { Test } from "./Test";
 declare const message: string;
-export { message };
+export { Test, message };
