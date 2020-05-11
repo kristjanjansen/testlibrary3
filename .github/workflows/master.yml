@@ -1,4 +1,5 @@
 name: On merge to master
+on:
   pull:
     branches:
       - master
