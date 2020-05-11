@@ -1,6 +1,6 @@
 {
-  "name": "kristjanjansen/testlibrary3",
+  "name": "testlibrary3",
   "private": true,
-  "version": "0.0.2",
-  "main": "src/index.ts",
+  "version": "0.0.3",
+  "main": "src/index.ts"
 }
