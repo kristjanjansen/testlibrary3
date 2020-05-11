@@ -29,6 +29,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           branch: ${{ env.BRANCH_NAME }}
+          force: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: butlerlogic/action-autotag@stable
         if: github.ref == 'refs/heads/master'
