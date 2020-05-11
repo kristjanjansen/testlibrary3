@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-const message: string = "World";
-=======
-const message: string = "Hello!";
->>>>>>> master
+const message: string = "Hello!!!";
 
 export { message };
