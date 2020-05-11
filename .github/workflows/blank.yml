@@ -13,17 +13,15 @@ jobs:
           ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v1
       - run: npm install
-      - name: Remove previous build
-        run: rm -R dist/*
       - run: npm run build
+      - name: test
+        run: echo "${GITHUB_REF##*/}"
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add dist
           git commit -m "Add changes" -a
-      - name: test
-        run: echo "${GITHUB_REF##*/}"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:

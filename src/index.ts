@@ -1,4 +1,3 @@
-  
-const message: string = "Hello";
+const message: string = "Hello!";
 
 export { message };
