@@ -10,9 +10,10 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm run build
+      - run: cat dist/index.js
       - uses: stefanzweifel/git-auto-commit-action@v2.1.0
         with:
-          commit_message: Apply changes
+          commit_message: Build the library
           branch: ${{ github.head_ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
