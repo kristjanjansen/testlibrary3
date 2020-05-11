@@ -1,9 +1,5 @@
 name: Publish the new version
-on:
-  pull_request:
-  push:
-    branches:
-      - master
+on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,21 +10,27 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm run build
-      - run: cat dist/index.js
-      - name: Commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add dist
-          git commit -m "Add changes" -a
+      - uses: stefanzweifel/git-auto-commit-action@v2.1.0
+        with:
+          commit_message: Apply changes
+          branch: ${{ github.head_ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - run: cat dist/index.js
+      # - name: Commit files
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git add dist
+      #     git commit -m "Add changes" -a
       # - name: Extract branch name
       #   shell: bash
       #   run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: kj_test
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     branch: kj_test
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: butlerlogic/action-autotag@stable
         if: github.ref == 'refs/heads/master'
         with:
