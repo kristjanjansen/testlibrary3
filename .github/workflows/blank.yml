@@ -14,6 +14,7 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm run build
+      - run: cat dist/index.js
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
