@@ -14,13 +14,15 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm run build
-      - uses: stefanzweifel/git-auto-commit-action@v2.1.0
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Add changes" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          commit_message: Commit a built library
-          file_pattern: dist/**/*
-          branch: ${{ github.head_ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: butlerlogic/action-autotag@stable
         if: github.ref == 'refs/heads/master'
         with:
