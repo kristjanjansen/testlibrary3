@@ -14,8 +14,8 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v2.1.0
         with:
           commit_message: Commit a built library
-          branch: ${{ github.head_ref }}
           file_pattern: dist/**/*
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: butlerlogic/action-autotag@stable
         with:
