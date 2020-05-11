@@ -13,8 +13,9 @@ jobs:
           ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v1
       - run: npm install
+      - name: Remove previous build
+        run: rm -R dist/*
       - run: npm run build
-      - run: ls dist
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
