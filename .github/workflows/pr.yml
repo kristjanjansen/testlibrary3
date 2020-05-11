@@ -1,9 +1,5 @@
-name: Build and tag
-on:
-  pull_request:
-  push:
-    branches:
-      - master
+name: On PR
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
