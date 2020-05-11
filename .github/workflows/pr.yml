@@ -9,8 +9,8 @@ jobs:
           ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v1
       - run: npm install
+      - run: rm -R dist/*
       - run: npm run build
-      - run: cat dist/index.js
       - uses: stefanzweifel/git-auto-commit-action@v2.1.0
         with:
           commit_message: Build the library
