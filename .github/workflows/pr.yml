@@ -1,5 +1,5 @@
 name: On PR
-on: [push]
+on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,9 +17,3 @@ jobs:
           branch: ${{ github.head_ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: butlerlogic/action-autotag@stable
-        if: github.ref == 'refs/heads/master'
-        with:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          strategy: package
-          tag_prefix: "v"
