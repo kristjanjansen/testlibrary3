@@ -18,6 +18,7 @@ jobs:
         with:
           commit_message: Commit a built library
           file_pattern: dist/**/*
+          branch: ${{ github.head_ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: butlerlogic/action-autotag@stable
